@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RootActivity">
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
@@ -16,14 +17,29 @@
         app:backgroundTint="@android:color/white"
         app:fabCradleMargin="15dp"
         app:fabCradleRoundedCornerRadius="20dp"
-        app:fabCradleVerticalOffset="10dp"
-        />
+        app:fabCradleVerticalOffset="10dp" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fabCustomSize="70dp"
-        app:layout_anchor="@id/bottom_app_bar"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_add_24"
-        android:contentDescription="@string/app_name" />
+        app:fabCustomSize="70dp"
+        app:layout_anchor="@id/bottom_app_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="-81dp">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

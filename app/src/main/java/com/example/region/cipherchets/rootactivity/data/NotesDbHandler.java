@@ -79,4 +79,9 @@ public class NotesDbHandler extends SQLiteOpenHelper {
         return db.update(Params.DB_TABLE,values,Params.KEY_ID+"=?",
                         new String[]{String.valueOf(notes.getId())});
     }
+    public void deleteNotes(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Params.DB_TABLE,Params.KEY_ID+"=?",new String[]{String.valueOf(id)});
+        db.close();
+    }
 }

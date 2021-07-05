@@ -8,28 +8,14 @@
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sort by"
-        android:textAllCaps="true"
-        android:textSize="20sp"
-        android:layout_gravity="end"
-        android:fontFamily="@font/poppins_light"
-        android:drawableStart="@drawable/ic_baseline_sort"
-        android:drawablePadding="8dp"
-        android:textColor="@color/darker_gray"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recycler"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/notes_item"
+        tools:itemCount="6"
         app:spanCount="2">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

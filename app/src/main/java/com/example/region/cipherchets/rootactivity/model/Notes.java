@@ -1,17 +1,21 @@
 package com.example.region.cipherchets.rootactivity.model;
 
+import android.view.View;
+
 public class Notes {
     private int id;
     private String date;
     private String time;
     private String short_desc;
     private String long_desc;
+    private View view;
 
-    public Notes(String date, String time, String short_desc, String long_desc) {
+    public Notes(String date, String time, String short_desc, String long_desc,View view) {
         this.date = date;
         this.time = time;
         this.short_desc = short_desc;
         this.long_desc = long_desc;
+        this.view = view;
     }
 
     public Notes() {
@@ -27,6 +31,14 @@ public class Notes {
 
     public String getShort_desc() {
         return short_desc;
+    }
+
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
     }
 
     public void setShort_desc(String short_desc) {

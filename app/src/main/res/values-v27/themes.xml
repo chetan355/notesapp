@@ -8,10 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">#E39F3B</item>
 
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:navigationBarColor">@color/colorPrimary</item>
-        <item name="android:navigationBarDividerColor">@color/colorAccent</item>
+        <item name="android:navigationBarDividerColor">#E39F3B</item>
     </style>
 </resources>

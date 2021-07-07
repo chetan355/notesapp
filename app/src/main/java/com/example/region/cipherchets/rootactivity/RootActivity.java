@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class RootActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
+//    private TabLayout tabLayout;
     private View view;
     public static final int MODE_ADD=1;
     private TextView textView;
@@ -40,10 +40,10 @@ public class RootActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
         add_note= findViewById(R.id.add_note);
-        tabLayout = findViewById(R.id.tabView);
-        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.tab_back, null);
-        textView = view.findViewById(R.id.tv1);
-        imageView = view.findViewById(R.id.iv1);
+//        tabLayout = findViewById(R.id.tabView);
+//        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.tab_back, null);
+//        textView = view.findViewById(R.id.tv1);
+//        imageView = view.findViewById(R.id.iv1);
 
         add_note.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,55 +53,57 @@ public class RootActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-  //      setCustomView(0, 1);
-//        setTextAndImageWithAnimation("HOME", R.drawable.ic_baseline_dashboard);
         fragmentHandling(new HomeFragment());
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 1:
-//                        setCustomView(1, 0);
-//                        setTextAndImageWithAnimation("PROFILE", R.drawable.ic_baseline_person);
-                        fragmentHandling(new ProfileFragment());
-                        break;
-                    case 0:
+  //      setCustomView(0, 1);
+//        setTextAndImageWithAnimation("HOME", R.drawable.ic_baseline_dashboard);
+//        fragmentHandling(new HomeFragment());
 
-                    default:
-//                        setCustomView(0, 1);
-  //                      setTextAndImageWithAnimation("HOME", R.drawable.ic_baseline_dashboard);
-                        fragmentHandling(new HomeFragment());
-                        break;
-                    //change to the fragment which you want to display
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                switch (tab.getPosition()) {
+//                    case 1:
+////                        setCustomView(1, 0);
+////                        setTextAndImageWithAnimation("PROFILE", R.drawable.ic_baseline_person);
+//                        fragmentHandling(new ProfileFragment());
+//                        break;
+//                    case 0:
+//
+//                    default:
+////                        setCustomView(0, 1);
+//  //                      setTextAndImageWithAnimation("HOME", R.drawable.ic_baseline_dashboard);
+//                        fragmentHandling(new HomeFragment());
+//                        break;
+//                    //change to the fragment which you want to display
+//                }
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
     }
 
-    private void setCustomView(int selectedtab, int non) {
-        Objects.requireNonNull(tabLayout.getTabAt(selectedtab)).setCustomView(view);
-        Objects.requireNonNull(tabLayout.getTabAt(non)).setCustomView(null);
-    }
-
-    private void setTextAndImageWithAnimation(String text, int images) {
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.slide_in_left);
-        animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        textView.setText(text);
-        imageView.setImageResource(images);
-        textView.startAnimation(animation);
-        imageView.startAnimation(animation);
-    }
+//    private void setCustomView(int selectedtab, int non) {
+//        Objects.requireNonNull(tabLayout.getTabAt(selectedtab)).setCustomView(view);
+//        Objects.requireNonNull(tabLayout.getTabAt(non)).setCustomView(null);
+//    }
+//
+//    private void setTextAndImageWithAnimation(String text, int images) {
+//        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.slide_in_left);
+//        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+//        textView.setText(text);
+//        imageView.setImageResource(images);
+//        textView.startAnimation(animation);
+//        imageView.startAnimation(animation);
+//    }
 
     private void fragmentHandling(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

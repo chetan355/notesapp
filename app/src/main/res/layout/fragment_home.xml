@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,4 +18,14 @@
         tools:itemCount="6"
         app:spanCount="2">
     </androidx.recyclerview.widget.RecyclerView>
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msg_txt"
+        android:text="Create Notes"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:letterSpacing="0.1"
+        />
+</RelativeLayout>

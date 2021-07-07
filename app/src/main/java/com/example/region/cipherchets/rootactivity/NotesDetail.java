@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,22 +18,30 @@ import com.example.region.cipherchets.rootactivity.model.Notes;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class NotesDetail extends AppCompatActivity {
     EditText title,note;
     Intent intent;
     NotesDbHandler notesDbHandler;
     String currentDate,currentTime;
+    Notes notesUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_detail);
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EEBE5C")));
         title = findViewById(R.id.titleEditText);
         note = findViewById(R.id.noteEditText);
+
         intent = getIntent();
-        title.setText(intent.getStringExtra("short_desc"));
-        note.setText(intent.getStringExtra("long_desc"));
+        if(intent.getIntExtra("mode",0)==2){
+            notesUpdate = intent.getParcelableExtra("notesObj");
+            title.setText(notesUpdate.getShort_desc());
+            note.setText(notesUpdate.getLong_desc());
+        }
         notesDbHandler = new NotesDbHandler(this);
+
         currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
     }
@@ -43,10 +53,13 @@ public class NotesDetail extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(intent.getIntExtra("mode",0)==1){
+            this.setTitle("Create Note");
             MenuItem menuItem = menu.findItem(R.id.update);
             menuItem.setVisible(false);
+            menu.findItem(R.id.delete).setVisible(false);
         }
         if(intent.getIntExtra("mode",0)==2){
+            this.setTitle("Edit Note");
             MenuItem menuItem = menu.findItem(R.id.save);
             menuItem.setVisible(false);
         }
@@ -58,7 +71,11 @@ public class NotesDetail extends AppCompatActivity {
             saveNote();
         }
         if(item.getItemId()==R.id.update){
-
+            updateNote();
+        }
+        if(item.getItemId()==R.id.delete){
+            notesDbHandler.deleteNotes(notesUpdate.getId());
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -71,7 +88,12 @@ public class NotesDetail extends AppCompatActivity {
             Toast.makeText(this,"Please Enter Content Of Note",Toast.LENGTH_SHORT).show();
             return;
         }
-
+        notesUpdate.setDate(currentDate);
+        notesUpdate.setTime(currentTime);
+        notesUpdate.setShort_desc(title.getText().toString());
+        notesUpdate.setLong_desc(note.getText().toString());
+        notesDbHandler.updateNotes(notesUpdate);
+        finish();
     }
     private void saveNote()
     {
@@ -83,12 +105,12 @@ public class NotesDetail extends AppCompatActivity {
             Toast.makeText(this,"Please Enter Content Of Note",Toast.LENGTH_SHORT).show();
             return;
         }
-        Notes notes = new Notes();
-        notes.setDate(currentDate);
-        notes.setTime(currentTime);
-        notes.setShort_desc(title.getText().toString());
-        notes.setLong_desc(note.getText().toString());
-        notesDbHandler.addNotes(notes);
+        Notes notesSave = new Notes();
+        notesSave.setDate(currentDate);
+        notesSave.setTime(currentTime);
+        notesSave.setShort_desc(title.getText().toString());
+        notesSave.setLong_desc(note.getText().toString());
+        notesDbHandler.addNotes(notesSave);
         Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
         finish();
     }

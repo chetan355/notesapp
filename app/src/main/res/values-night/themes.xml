@@ -8,5 +8,6 @@
 
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">#E39F3B</item>
     </style>
 </resources>

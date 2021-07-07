@@ -1,8 +1,12 @@
 package com.example.region.cipherchets.rootactivity.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 
-public class Notes {
+import java.io.Serializable;
+
+public class Notes implements Parcelable {
     private int id;
     private String date;
     private String time;
@@ -20,6 +24,26 @@ public class Notes {
 
     public Notes() {
     }
+
+    protected Notes(Parcel in) {
+        id = in.readInt();
+        date = in.readString();
+        time = in.readString();
+        short_desc = in.readString();
+        long_desc = in.readString();
+    }
+
+    public static final Creator<Notes> CREATOR = new Creator<Notes>() {
+        @Override
+        public Notes createFromParcel(Parcel in) {
+            return new Notes(in);
+        }
+
+        @Override
+        public Notes[] newArray(int size) {
+            return new Notes[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -67,5 +91,19 @@ public class Notes {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(date);
+        dest.writeString(time);
+        dest.writeString(short_desc);
+        dest.writeString(long_desc);
     }
 }

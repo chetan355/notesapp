@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.region.cipherchets.rootactivity.adapter.NotesAdapter;
 import com.example.region.cipherchets.rootactivity.data.NotesDbHandler;
@@ -25,13 +26,15 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
+    TextView message;
+    List<Notes> allnotes;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recycler);
-
+        message = view.findViewById(R.id.msg_txt);
 //        Notes notes = new Notes();
 //        notes.setDate(currentDate);
 //        notes.setTime(currentTime);
@@ -61,12 +64,11 @@ public class HomeFragment extends Fragment {
     }
     public void fetchData(){
         NotesDbHandler notesDbHandler = new NotesDbHandler(getContext());
-        List<Notes> allnotes = notesDbHandler.getAllNotes();
-
-        for(Notes note:allnotes){
-            Log.d("debug","ID:"+note.getId()+"Date:"+note.getDate()+"Time:"+note.getTime()
-                    +"short_desc:"+note.getShort_desc()+"long_desc:"+note.getLong_desc());
-        }
+        allnotes = notesDbHandler.getAllNotes();
+//        for(Notes note:allnotes){
+//            Log.d("debug","ID:"+note.getId()+"Date:"+note.getDate()+"Time:"+note.getTime()
+//                    +"short_desc:"+note.getShort_desc()+"long_desc:"+note.getLong_desc());
+//        }
         notesAdapter = new NotesAdapter(allnotes,getContext());
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(notesAdapter);

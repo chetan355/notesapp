@@ -26,7 +26,7 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
-    TextView message;
+//    TextView message;
     List<Notes> allnotes;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recycler);
-        message = view.findViewById(R.id.msg_txt);
+//        message = view.findViewById(R.id.msg_txt);
 //        Notes notes = new Notes();
 //        notes.setDate(currentDate);
 //        notes.setTime(currentTime);

@@ -18,14 +18,14 @@
         tools:itemCount="6"
         app:spanCount="2">
     </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/msg_txt"
-        android:text="Create Notes"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:letterSpacing="0.1"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/msg_txt"-->
+<!--        android:text="Create Notes"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold|italic"-->
+<!--        android:letterSpacing="0.1"-->
+<!--        />-->
 </RelativeLayout>
